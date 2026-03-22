@@ -10,38 +10,39 @@
     :root {
       --rouge: #c8102e;
       --noir: #111111;
-      --gris: #f2f2f2;
+      --gris: #f0f0f0;
       --blanc: #ffffff;
-      --texte: #333333;
-      --texte-leger: #777777;
+      --texte: #222222;
+      --texte-leger: #666666;
     }
     body { font-family: 'Source Sans 3', sans-serif; background-color: var(--gris); color: var(--texte); min-height: 100vh; }
 
-    nav { background-color: var(--noir); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.4); }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--blanc); text-decoration: none; letter-spacing: 1px; }
+    nav { background-color: var(--noir); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 68px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(0,0,0,0.5); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--blanc); text-decoration: none; letter-spacing: 1px; }
     .nav-logo span { color: var(--rouge); }
-    .nav-links { display: flex; gap: 6px; }
-    .nav-links a { color: #ccc; text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; padding: 8px 16px; border-radius: 4px; transition: all 0.2s; }
+    .nav-links { display: flex; gap: 4px; }
+    .nav-links a { color: #bbb; text-decoration: none; font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.3px; padding: 8px 18px; border-radius: 4px; transition: all 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--blanc); background-color: var(--rouge); }
 
-    .page-header { background-color: var(--noir); color: var(--blanc); text-align: center; padding: 40px 20px; border-bottom: 4px solid var(--rouge); }
-    .page-header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; }
+    .page-header { background-color: var(--noir); color: var(--blanc); text-align: center; padding: 50px 20px 40px; border-bottom: 5px solid var(--rouge); }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; }
 
-    .container { max-width: 800px; margin: 40px auto 60px; padding: 0 20px; }
+    .container { max-width: 780px; margin: 44px auto 60px; padding: 0 20px; }
 
-    .form-card { background: var(--blanc); border-radius: 10px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-    .form-card h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--noir); margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid var(--gris); }
+    .form-card { background: var(--blanc); border-radius: 12px; padding: 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
 
-    .form-group { margin-bottom: 22px; }
-    .form-group label { display: block; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--texte); margin-bottom: 8px; }
+    .form-card h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--noir); margin-bottom: 32px; padding-bottom: 18px; border-bottom: 2px solid var(--gris); }
+
+    .form-group { margin-bottom: 24px; }
+    .form-group label { display: block; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 8px; }
     .form-group input,
     .form-group textarea,
     .form-group select {
       width: 100%;
-      padding: 12px 16px;
+      padding: 13px 16px;
       font-size: 1rem;
-      border-radius: 6px;
-      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      border: 2px solid #e8e8e8;
       font-family: inherit;
       transition: border-color 0.2s;
       background: var(--blanc);
@@ -50,21 +51,23 @@
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus { outline: none; border-color: var(--rouge); }
-    .form-group textarea { height: 220px; resize: vertical; line-height: 1.6; }
+    .form-group textarea { height: 240px; resize: vertical; line-height: 1.7; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
     .btn-publier {
       width: 100%;
       background-color: var(--rouge);
       color: white;
       border: none;
-      padding: 16px;
+      padding: 17px;
       font-size: 1rem;
       font-weight: 700;
       font-family: inherit;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       cursor: pointer;
-      border-radius: 6px;
+      border-radius: 8px;
       transition: background-color 0.2s, transform 0.1s;
       margin-top: 8px;
     }
@@ -72,11 +75,11 @@
     .btn-publier:active { transform: scale(0.99); }
     .btn-publier:disabled { background-color: #ccc; cursor: not-allowed; }
 
-    .status { margin-top: 16px; padding: 14px 18px; border-radius: 6px; font-weight: 600; display: none; }
+    .status { margin-top: 16px; padding: 14px 18px; border-radius: 8px; font-weight: 600; display: none; font-size: 0.95rem; }
     .status.success { background: #d4edda; color: #155724; display: block; }
     .status.error { background: #f8d7da; color: #721c24; display: block; }
 
-    footer { background-color: var(--noir); color: #777; padding: 20px; text-align: center; font-size: 0.85rem; }
+    footer { background-color: var(--noir); color: #555; padding: 28px; text-align: center; font-size: 0.82rem; border-top: 3px solid var(--rouge); }
     footer span { color: var(--rouge); }
   </style>
 </head>
@@ -99,24 +102,25 @@
       <h2>Nouvel article</h2>
 
       <div class="form-group">
-        <label for="titre">Titre</label>
-        <input type="text" id="titre" placeholder="Titre de l'article">
+        <label for="titre">Titre de l'article</label>
+        <input type="text" id="titre" placeholder="Un titre accrocheur...">
       </div>
 
-      <div class="form-group">
-        <label for="auteur">Auteur</label>
-        <input type="text" id="auteur" placeholder="Votre nom">
-      </div>
-
-      <div class="form-group">
-        <label for="type">Catégorie</label>
-        <select id="type">
-          <option value="">-- Choisir une catégorie --</option>
-          <option value="Politique">Politique</option>
-          <option value="Société">Société</option>
-          <option value="Économie">Économie</option>
-          <option value="Autre">Autre</option>
-        </select>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="auteur">Auteur</label>
+          <input type="text" id="auteur" placeholder="Votre nom">
+        </div>
+        <div class="form-group">
+          <label for="type">Catégorie</label>
+          <select id="type">
+            <option value="">-- Choisir --</option>
+            <option value="Politique">Politique</option>
+            <option value="Société">Société</option>
+            <option value="Économie">Économie</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
       </div>
 
       <div class="form-group">
@@ -130,7 +134,7 @@
   </div>
 
   <footer>
-    <p>&copy; 2025 <span>Le Contemporain</span>. Tous droits réservés.</p>
+    <p>&copy; 2025 <span>Le Contemporain</span> — Tous droits réservés.</p>
   </footer>
 
   <script type="module">
@@ -148,7 +152,6 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-
     const btn = document.getElementById('publierBtn');
     const status = document.getElementById('status');
 
@@ -159,7 +162,6 @@
       const type = document.getElementById('type').value;
 
       status.className = 'status';
-
       if (!titre || !contenu || !auteur || !type) {
         status.textContent = '⚠️ Veuillez remplir tous les champs.';
         status.className = 'status error';
@@ -170,16 +172,13 @@
       btn.textContent = 'Publication en cours...';
 
       try {
-        await addDoc(collection(db, "articles"), {
-          titre, contenu, auteur, type,
-          date: Timestamp.now()
-        });
+        await addDoc(collection(db, "articles"), { titre, contenu, auteur, type, date: Timestamp.now() });
         status.textContent = '✅ Article publié avec succès ! Redirection...';
         status.className = 'status success';
         setTimeout(() => { window.location.href = 'publications.html'; }, 1500);
       } catch (e) {
         console.error(e);
-        status.textContent = '❌ Erreur lors de la publication. Vérifiez votre connexion.';
+        status.textContent = '❌ Erreur lors de la publication.';
         status.className = 'status error';
         btn.disabled = false;
         btn.textContent = "Publier l'article";
