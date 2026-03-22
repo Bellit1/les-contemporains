@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Contemporain | Accueil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --rouge: #c8102e;
+      --noir: #111111;
+      --gris: #f2f2f2;
+      --blanc: #ffffff;
+      --texte: #333333;
+      --texte-leger: #777777;
+    }
+    body { font-family: 'Source Sans 3', sans-serif; background-color: var(--gris); color: var(--texte); min-height: 100vh; }
+
+    nav {
+      background-color: var(--noir);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--blanc); text-decoration: none; letter-spacing: 1px; }
+    .nav-logo span { color: var(--rouge); }
+    .nav-links { display: flex; gap: 6px; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; padding: 8px 16px; border-radius: 4px; transition: all 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--blanc); background-color: var(--rouge); }
+
+    .hero { background-color: var(--noir); color: var(--blanc); text-align: center; padding: 60px 20px 50px; border-bottom: 4px solid var(--rouge); }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; letter-spacing: 2px; margin-bottom: 10px; }
+    .hero p { color: #aaa; font-size: 1rem; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; }
+
+    .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--noir); margin: 40px 0 20px; }
+    .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--rouge); margin: 10px auto 0; }
+
+    .articles-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin: 0 auto 80px; max-width: 1200px; padding: 0 30px; }
+
+    .article-card { background-color: var(--blanc); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.08); transition: transform 0.25s, box-shadow 0.25s; display: flex; flex-direction: column; }
+    .article-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.14); }
+    .card-tag { background-color: var(--rouge); color: white; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 12px; display: inline-block; margin: 20px 20px 0; border-radius: 2px; width: fit-content; }
+    .article-card h2 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--noir); padding: 10px 20px 8px; line-height: 1.4; }
+    .article-card p { color: var(--texte-leger); font-size: 0.95rem; line-height: 1.6; padding: 0 20px; flex: 1; }
+    .card-footer { padding: 14px 20px; border-top: 1px solid #eee; font-size: 0.8rem; color: #aaa; display: flex; justify-content: space-between; margin-top: 14px; }
+
+    .empty-msg { text-align: center; color: var(--texte-leger); font-size: 1.1rem; padding: 60px 0; grid-column: 1 / -1; }
+
+    footer { background-color: var(--noir); color: #777; padding: 20px; text-align: center; font-size: 0.85rem; }
+    footer span { color: var(--rouge); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">Le <span>Contemporain</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="publications.html">Publications</a>
+      <a href="publier.html">Publier</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Le Contemporain</h1>
+    <p>Journalism · Analyse · Société</p>
+  </div>
+
+  <h2 class="section-title">Derniers articles</h2>
+
+  <div class="articles-container" id="articles-container">
+    <p class="empty-msg">Chargement des articles...</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 <span>Le Contemporain</span>. Tous droits réservés.</p>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBSgloqKAOZ1GuV79czpOR3trBtipbM52E",
+      authDomain: "les-contemporains-662a6.firebaseapp.com",
+      projectId: "les-contemporains-662a6",
+      storageBucket: "les-contemporains-662a6.firebasestorage.app",
+      messagingSenderId: "430635541529",
+      appId: "1:430635541529:web:c0de908b274aee31a3b688"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const container = document.getElementById('articles-container');
+
+    async function afficherArticles() {
+      try {
+        const q = query(collection(db, "articles"), orderBy("date", "desc"));
+        const snap = await getDocs(q);
+        container.innerHTML = '';
+        if (snap.empty) { container.innerHTML = '<p class="empty-msg">Aucun article publié pour le moment.</p>'; return; }
+        snap.forEach((doc) => {
+          const a = doc.data();
+          const date = a.date?.toDate ? a.date.toDate().toLocaleDateString('fr-FR') : '';
+          const div = document.createElement('div');
+          div.className = 'article-card';
+          div.innerHTML = `
+            <span class="card-tag">${a.type || 'Article'}</span>
+            <h2>${a.titre}</h2>
+            <p>${a.contenu.substring(0, 180)}...</p>
+            <div class="card-footer"><span>✍️ ${a.auteur}</span><span>${date}</span></div>
+          `;
+          container.appendChild(div);
+        });
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = '<p class="empty-msg">Erreur lors du chargement.</p>';
+      }
+    }
+    afficherArticles();
+  </script>
+</body>
+</html>

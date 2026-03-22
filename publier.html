@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Contemporain | Publier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --rouge: #c8102e;
+      --noir: #111111;
+      --gris: #f2f2f2;
+      --blanc: #ffffff;
+      --texte: #333333;
+      --texte-leger: #777777;
+    }
+    body { font-family: 'Source Sans 3', sans-serif; background-color: var(--gris); color: var(--texte); min-height: 100vh; }
+
+    nav { background-color: var(--noir); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--blanc); text-decoration: none; letter-spacing: 1px; }
+    .nav-logo span { color: var(--rouge); }
+    .nav-links { display: flex; gap: 6px; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; padding: 8px 16px; border-radius: 4px; transition: all 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--blanc); background-color: var(--rouge); }
+
+    .page-header { background-color: var(--noir); color: var(--blanc); text-align: center; padding: 40px 20px; border-bottom: 4px solid var(--rouge); }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; }
+
+    .container { max-width: 800px; margin: 40px auto 60px; padding: 0 20px; }
+
+    .form-card { background: var(--blanc); border-radius: 10px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .form-card h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--noir); margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid var(--gris); }
+
+    .form-group { margin-bottom: 22px; }
+    .form-group label { display: block; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--texte); margin-bottom: 8px; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 2px solid #e0e0e0;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      background: var(--blanc);
+      color: var(--texte);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { outline: none; border-color: var(--rouge); }
+    .form-group textarea { height: 220px; resize: vertical; line-height: 1.6; }
+
+    .btn-publier {
+      width: 100%;
+      background-color: var(--rouge);
+      color: white;
+      border: none;
+      padding: 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background-color 0.2s, transform 0.1s;
+      margin-top: 8px;
+    }
+    .btn-publier:hover { background-color: #a30d25; }
+    .btn-publier:active { transform: scale(0.99); }
+    .btn-publier:disabled { background-color: #ccc; cursor: not-allowed; }
+
+    .status { margin-top: 16px; padding: 14px 18px; border-radius: 6px; font-weight: 600; display: none; }
+    .status.success { background: #d4edda; color: #155724; display: block; }
+    .status.error { background: #f8d7da; color: #721c24; display: block; }
+
+    footer { background-color: var(--noir); color: #777; padding: 20px; text-align: center; font-size: 0.85rem; }
+    footer span { color: var(--rouge); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">Le <span>Contemporain</span></a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="publications.html">Publications</a>
+      <a href="publier.html" class="active">Publier</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <h1>Publier un article</h1>
+  </div>
+
+  <div class="container">
+    <div class="form-card">
+      <h2>Nouvel article</h2>
+
+      <div class="form-group">
+        <label for="titre">Titre</label>
+        <input type="text" id="titre" placeholder="Titre de l'article">
+      </div>
+
+      <div class="form-group">
+        <label for="auteur">Auteur</label>
+        <input type="text" id="auteur" placeholder="Votre nom">
+      </div>
+
+      <div class="form-group">
+        <label for="type">Catégorie</label>
+        <select id="type">
+          <option value="">-- Choisir une catégorie --</option>
+          <option value="Politique">Politique</option>
+          <option value="Société">Société</option>
+          <option value="Économie">Économie</option>
+          <option value="Autre">Autre</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="contenu">Contenu</label>
+        <textarea id="contenu" placeholder="Rédigez votre article ici..."></textarea>
+      </div>
+
+      <button class="btn-publier" id="publierBtn">Publier l'article</button>
+      <div class="status" id="status"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 <span>Le Contemporain</span>. Tous droits réservés.</p>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBSgloqKAOZ1GuV79czpOR3trBtipbM52E",
+      authDomain: "les-contemporains-662a6.firebaseapp.com",
+      projectId: "les-contemporains-662a6",
+      storageBucket: "les-contemporains-662a6.firebasestorage.app",
+      messagingSenderId: "430635541529",
+      appId: "1:430635541529:web:c0de908b274aee31a3b688"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const btn = document.getElementById('publierBtn');
+    const status = document.getElementById('status');
+
+    btn.addEventListener('click', async () => {
+      const titre = document.getElementById('titre').value.trim();
+      const contenu = document.getElementById('contenu').value.trim();
+      const auteur = document.getElementById('auteur').value.trim();
+      const type = document.getElementById('type').value;
+
+      status.className = 'status';
+
+      if (!titre || !contenu || !auteur || !type) {
+        status.textContent = '⚠️ Veuillez remplir tous les champs.';
+        status.className = 'status error';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Publication en cours...';
+
+      try {
+        await addDoc(collection(db, "articles"), {
+          titre, contenu, auteur, type,
+          date: Timestamp.now()
+        });
+        status.textContent = '✅ Article publié avec succès ! Redirection...';
+        status.className = 'status success';
+        setTimeout(() => { window.location.href = 'publications.html'; }, 1500);
+      } catch (e) {
+        console.error(e);
+        status.textContent = '❌ Erreur lors de la publication. Vérifiez votre connexion.';
+        status.className = 'status error';
+        btn.disabled = false;
+        btn.textContent = "Publier l'article";
+      }
+    });
+  </script>
+</body>
+</html>
