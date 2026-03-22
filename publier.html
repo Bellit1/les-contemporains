@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Le Contemporain | Publier</title>
+  <title>Les Contemporains | Publier</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,49 +28,18 @@
     .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; }
 
     .container { max-width: 780px; margin: 44px auto 60px; padding: 0 20px; }
-
     .form-card { background: var(--blanc); border-radius: 12px; padding: 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
-
     .form-card h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--noir); margin-bottom: 32px; padding-bottom: 18px; border-bottom: 2px solid var(--gris); }
 
     .form-group { margin-bottom: 24px; }
     .form-group label { display: block; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 8px; }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 13px 16px;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: 2px solid #e8e8e8;
-      font-family: inherit;
-      transition: border-color 0.2s;
-      background: var(--blanc);
-      color: var(--texte);
-    }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus { outline: none; border-color: var(--rouge); }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 13px 16px; font-size: 1rem; border-radius: 8px; border: 2px solid #e8e8e8; font-family: inherit; transition: border-color 0.2s; background: var(--blanc); color: var(--texte); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--rouge); }
     .form-group textarea { height: 240px; resize: vertical; line-height: 1.7; }
 
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-    .btn-publier {
-      width: 100%;
-      background-color: var(--rouge);
-      color: white;
-      border: none;
-      padding: 17px;
-      font-size: 1rem;
-      font-weight: 700;
-      font-family: inherit;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: background-color 0.2s, transform 0.1s;
-      margin-top: 8px;
-    }
+    .btn-publier { width: 100%; background-color: var(--rouge); color: white; border: none; padding: 17px; font-size: 1rem; font-weight: 700; font-family: inherit; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; border-radius: 8px; transition: background-color 0.2s, transform 0.1s; margin-top: 8px; }
     .btn-publier:hover { background-color: #a30d25; }
     .btn-publier:active { transform: scale(0.99); }
     .btn-publier:disabled { background-color: #ccc; cursor: not-allowed; }
@@ -85,7 +54,7 @@
 </head>
 <body>
   <nav>
-    <a class="nav-logo" href="index.html">Le <span>Contemporain</span></a>
+    <a class="nav-logo" href="index.html">Les <span>Contemporains</span></a>
     <div class="nav-links">
       <a href="index.html">Accueil</a>
       <a href="publications.html">Publications</a>
@@ -118,6 +87,8 @@
             <option value="Politique">Politique</option>
             <option value="Société">Société</option>
             <option value="Économie">Économie</option>
+            <option value="Science">Science</option>
+            <option value="Histoire">Histoire</option>
             <option value="Autre">Autre</option>
           </select>
         </div>
@@ -125,7 +96,7 @@
 
       <div class="form-group">
         <label for="contenu">Contenu</label>
-        <textarea id="contenu" placeholder="Rédigez votre article ici..."></textarea>
+        <textarea id="contenu" placeholder="Rédigez votre article ici...&#10;&#10;Astuce : séparez vos paragraphes par une ligne vide. Le premier paragraphe sera mis en avant comme introduction."></textarea>
       </div>
 
       <button class="btn-publier" id="publierBtn">Publier l'article</button>
@@ -134,7 +105,7 @@
   </div>
 
   <footer>
-    <p>&copy; 2025 <span>Le Contemporain</span> — Tous droits réservés.</p>
+    <p>&copy; 2025 <span>Les Contemporains</span> — Tous droits réservés.</p>
   </footer>
 
   <script type="module">
