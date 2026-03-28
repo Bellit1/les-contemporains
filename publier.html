@@ -50,6 +50,27 @@
 
     footer { background-color: var(--noir); color: #555; padding: 28px; text-align: center; font-size: 0.82rem; border-top: 3px solid var(--rouge); }
     footer span { color: var(--rouge); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; height: 56px; }
+      .nav-logo { font-size: 1.15rem; }
+      .nav-links a { font-size: 0.72rem; padding: 6px 10px; letter-spacing: 0.8px; }
+
+      .page-header { padding: 32px 16px 28px; }
+      .page-header h1 { font-size: 2rem; }
+
+      .container { margin: 24px auto 40px; padding: 0 16px; }
+      .form-card { padding: 24px 20px; border-radius: 8px; }
+      .form-card h2 { font-size: 1.3rem; margin-bottom: 24px; }
+
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+
+      .form-group input, .form-group textarea, .form-group select { font-size: 0.95rem; padding: 11px 14px; }
+      .form-group textarea { height: 200px; }
+
+      .btn-publier { padding: 15px; font-size: 0.95rem; }
+    }
   </style>
 </head>
 <body>

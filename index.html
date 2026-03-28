@@ -66,6 +66,30 @@
 
     footer { background-color: var(--noir); color: #555; padding: 28px; text-align: center; font-size: 0.82rem; letter-spacing: 0.5px; border-top: 3px solid var(--rouge); }
     footer span { color: var(--rouge); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; height: 56px; }
+      .nav-logo { font-size: 1.15rem; }
+      .nav-links a { font-size: 0.72rem; padding: 6px 10px; letter-spacing: 0.8px; }
+
+      .hero { padding: 48px 16px 36px; }
+      .hero h1 { font-size: 2.6rem; }
+      .hero p { font-size: 0.78rem; letter-spacing: 2px; }
+
+      .section-header { margin: 28px auto 16px; padding: 0 16px; }
+      .section-header h2 { font-size: 1.3rem; }
+
+      .articles-container { grid-template-columns: 1fr; gap: 16px; padding: 0 16px; margin-bottom: 48px; }
+
+      .modal { width: 100%; max-width: 100%; max-height: 100vh; border-radius: 0; top: 0; left: 0; transform: none; }
+      .modal-header { padding: 48px 20px 20px; }
+      .modal-body { padding: 20px 20px 40px; }
+      .modal h2 { font-size: 1.45rem; }
+      .modal-chapeau { font-size: 1rem; }
+      .modal-content { font-size: 0.97rem; line-height: 1.85; }
+      .modal-close { top: 12px; right: 14px; font-size: 1.8rem; }
+    }
   </style>
 </head>
 <body>

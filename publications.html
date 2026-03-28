@@ -102,6 +102,39 @@
 
     footer { background-color: var(--noir); color: #555; padding: 28px; text-align: center; font-size: 0.82rem; border-top: 3px solid var(--rouge); }
     footer span { color: var(--rouge); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; height: 56px; }
+      .nav-logo { font-size: 1.15rem; }
+      .nav-links a { font-size: 0.72rem; padding: 6px 10px; letter-spacing: 0.8px; }
+
+      .page-header { padding: 32px 16px 28px; }
+      .page-header h1 { font-size: 2rem; }
+
+      .admin-bar { padding: 0 16px; margin-top: 16px; }
+
+      .toolbar { padding: 0 16px; flex-direction: column; align-items: stretch; }
+      .toolbar input { width: 100%; }
+      .filters { gap: 6px; }
+      .filters button { padding: 7px 12px; font-size: 0.78rem; }
+
+      .articles { padding: 0 16px; margin-top: 16px; }
+      .card-body { padding: 16px 16px 12px; }
+      .article-card h3 { font-size: 1.1rem; }
+      .card-actions { padding: 10px 16px; }
+
+      .modal { width: 100%; max-width: 100%; max-height: 100vh; border-radius: 0; top: 0; left: 0; transform: none; }
+      .modal-header { padding: 48px 20px 20px; }
+      .modal-body { padding: 20px 20px 40px; }
+      .modal h2 { font-size: 1.45rem; }
+      .modal-chapeau { font-size: 1rem; }
+      .modal-content { font-size: 0.97rem; line-height: 1.85; }
+      .modal-close { top: 12px; right: 14px; font-size: 1.8rem; }
+
+      .pwd-modal { padding: 28px 20px; }
+      .edit-modal { padding: 24px 16px; width: 100%; max-width: 100%; max-height: 100vh; border-radius: 0; top: 0; left: 0; transform: none; }
+    }
   </style>
 </head>
 <body>
